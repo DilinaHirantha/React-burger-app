@@ -3,7 +3,7 @@ import Layout from './components/Layout/Layout';
 import BurgerBuilder from "./containers/BurgerBuilder/BurgerBuilder";
 
 class App extends Component {
-    render() {
+    render() { /* in render method you can't have multiple HTML tags without wrapping */
         return (
             <div>
                 <Layout>
