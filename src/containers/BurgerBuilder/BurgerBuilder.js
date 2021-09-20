@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Aux from '../../hoc/Auxs'
+import Aux from '../../hoc/Auxs/Auxs'
 import Burger from '../../components/Burger/Burger'
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal/Modal";
@@ -90,7 +90,6 @@ class BurgerBuilder extends Component {
         // console.log(this.state)
     }
 
-
     render() {
         const disableInfo = {
             ...this.state.ingredients
@@ -98,6 +97,7 @@ class BurgerBuilder extends Component {
         for (let key in disableInfo) {
             disableInfo[key] = disableInfo[key] <= 0; /* assign bool & disableInfo is like [salad:true, meat:false,..]*/
         }
+
         return (
             <Aux>
                 <Modal show={this.state.purchasing} ModelClosed={this.purchasingCancelHandler}>
