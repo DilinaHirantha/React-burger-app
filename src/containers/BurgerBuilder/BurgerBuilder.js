@@ -10,13 +10,8 @@ import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 
 class BurgerBuilder extends Component {
     state = {
-        ingredients: {
-            salad: 0,
-            bacon: 0,
-            cheese: 0,
-            meat: 0
-        }
-        , totalPrice: 4,
+        ingredients: {},
+        totalPrice: 4,
         purchasable: false,
         purchasing: false,
         loading: false
@@ -28,6 +23,14 @@ class BurgerBuilder extends Component {
         bacon: 0.7,
         cheese: 0.4,
         meat: 1.7
+    }
+
+    componentDidMount() {
+        axios.get('/ingredients.json').then(res => {
+            this.setState({ingredients: res.data})
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
     purchaseHandler = (ingredients) => {
@@ -67,7 +70,7 @@ class BurgerBuilder extends Component {
             deliveryMethod: 'fastest'
         }
 
-        axios.post('/orders', order).then(response => {
+        axios.post('/orders.json', order).then(response => {
             this.setState({
                 loading: false,
                 purchasing: false
